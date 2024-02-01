@@ -8,9 +8,13 @@ export default function RootLayout({
 }) {
   return (
     <div className="flex h-screen flex-col">
+      {/* <div className="relative"> */}
       <Header />
-      <main className="flex-1">{children}</main>
+      {/* <div className="gradient-03 z-0" /> */}
+      <main className="flex-1 mt-20">{children}</main>
+      {/* <div className="gradient-04 z-0" /> */}
       <Footer />
+      {/* </div> */}
     </div>
   );
 }

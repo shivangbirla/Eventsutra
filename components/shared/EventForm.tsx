@@ -191,7 +191,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-4 py-2">
                     <Image
                       src="/assets/icons/location-grey.svg"
                       alt="calendar"
@@ -219,7 +219,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-4 py-2">
                     <Image
                       src="/assets/icons/calendar.svg"
                       alt="calendar"
@@ -251,7 +251,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-4 py-2">
                     <Image
                       src="/assets/icons/calendar.svg"
                       alt="calendar"
@@ -285,7 +285,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full dark:bg-slate-800 bg-grey-50 px-4 py-2">
                     <Image
                       src="/assets/icons/dollar.svg"
                       alt="dollar"
@@ -297,7 +297,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       type="number"
                       placeholder="Price"
                       {...field}
-                      className="p-regular-16 border-0 bg-grey-50 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className="p-regular-16 border-0 bg-grey-50 dark:bg-slate-800 outline-offset-0 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                     />
                     <FormField
                       control={form.control}
@@ -336,7 +336,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-4 py-2">
                     <Image
                       src="/assets/icons/link.svg"
                       alt="link"

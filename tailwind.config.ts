@@ -19,6 +19,8 @@ module.exports = withUt({
     },
     extend: {
       colors: {
+        "primary-black": "#1A232E",
+        "secondary-white": "#c7c7c7",
         primary: {
           500: "#624CF5",
           50: " #F6F8FD",

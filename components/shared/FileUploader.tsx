@@ -32,7 +32,7 @@ export function FileUploader({
   return (
     <div
       {...getRootProps()}
-      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50"
+      className="flex-center bg-dark-3 flex h-72 cursor-pointer flex-col overflow-hidden rounded-xl bg-grey-50 dark:bg-slate-800 dark:text-white"
     >
       <input {...getInputProps()} className="cursor-pointer" />
 

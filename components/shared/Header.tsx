@@ -4,18 +4,20 @@ import Link from "next/link";
 import { Button } from "../ui/button";
 import NavItems from "./NavItems";
 import MobileNav from "./MobileNav";
+import { ModeToggle } from "./ModeToggle";
 
 const Header = () => {
   return (
-    <header className="w-full border-b">
+    <header className="fixed top-0 w-full border-b dark:border-gray-800 z-50 shadow-md dark:shadow-primary-black backnavdrop">
       <div className="wrapper flex items-center justify-between">
         <Link href="/" className="w-36">
-          <Image
+          {/* <Image
             src="/assets/images/logo.svg"
             width={128}
             height={38}
             alt="Evently logo"
-          />
+          /> */}
+          <h3 className="text-semibold text-[24px]">EVENTS</h3>
         </Link>
 
         <SignedIn>
@@ -24,7 +26,7 @@ const Header = () => {
           </nav>
         </SignedIn>
 
-        <div className="flex w-32 justify-end gap-3">
+        <div className="flex items-center w-45 justify-end gap-8">
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
             <MobileNav />
@@ -34,6 +36,7 @@ const Header = () => {
               <Link href="/sign-in">Login</Link>
             </Button>
           </SignedOut>
+          <ModeToggle />
         </div>
       </div>
     </header>
