@@ -13,8 +13,14 @@ import { CreateUserParams, UpdateUserParams } from "@/types";
 export async function createUser(user: CreateUserParams) {
   try {
     await connectToDatabase();
+    console.log(user);
+
+    if (!user.isAdmin) {
+      user.isAdmin = false;
+    }
 
     const newUser = await User.create(user);
+    console.log(newUser);
     return JSON.parse(JSON.stringify(newUser));
   } catch (error) {
     handleError(error);
@@ -37,6 +43,10 @@ export async function getUserById(userId: string) {
 export async function updateUser(clerkId: string, user: UpdateUserParams) {
   try {
     await connectToDatabase();
+
+    if (!user.isAdmin) {
+      user.isAdmin = false;
+    }
 
     const updatedUser = await User.findOneAndUpdate({ clerkId }, user, {
       new: true,

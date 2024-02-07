@@ -225,15 +225,15 @@ body {
   }
 
   .button {
-    @apply rounded-full h-[54px] p-regular-16;
+    @apply rounded-full h-[54px] p-regular-16 dark:bg-slate-800 dark:text-white;
   }
 
   .select-item {
-    @apply py-3 cursor-pointer focus-visible:ring-offset-0 focus:bg-primary-50;
+    @apply py-3 cursor-pointer focus-visible:ring-offset-0 focus:bg-primary-50 dark:bg-slate-800 dark:text-white;
   }
 
   .toggle-switch {
-    @apply bg-gray-300 !important;
+    @apply bg-gray-300 !important dark:bg-slate-800 dark:text-white;
   }
 
   /* Blur-Effect */
