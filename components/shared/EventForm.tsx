@@ -29,6 +29,7 @@ import { Checkbox } from "../ui/checkbox";
 import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { IEvent } from "@/lib/database/models/event.model";
+import { FaGetPocket } from "react-icons/fa";
 
 type EventFormProps = {
   userId: string;
@@ -201,6 +202,25 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 
                     <Input
                       placeholder="Event location or Online"
+                      {...field}
+                      className="input-field"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="age"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex flex-row items-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-4 py-2">
+                    <FaGetPocket className="w-[20px] h-[20px] text-gray-500" />
+                    <Input
+                      placeholder="Enter min-age"
                       {...field}
                       className="input-field"
                     />

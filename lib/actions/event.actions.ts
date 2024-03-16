@@ -44,6 +44,7 @@ export async function createEvent({ userId, event, path }: CreateEventParams) {
       category: event.categoryId,
       organizer: userId,
     });
+    // console.log("newEvent", newEvent);
     revalidatePath(path);
 
     return JSON.parse(JSON.stringify(newEvent));

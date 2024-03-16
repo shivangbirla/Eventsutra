@@ -14,6 +14,9 @@ import Order from "../database/models/order.model";
 import Event from "../database/models/event.model";
 import { ObjectId } from "mongodb";
 import User from "../database/models/user.model";
+import WelcomeEmail from "../../components/shared/Welcome";
+import { Resend } from "resend";
+import { getUserById } from "./user.actions";
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -49,6 +52,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
   }
 };
 
+// const resend = new Resend(process.env.RESEND_API_KEY);
 export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
@@ -59,9 +63,27 @@ export const createOrder = async (order: CreateOrderParams) => {
       buyer: order.buyerId,
     });
 
+    // // Fetch user details
+    // const user = await getUserById(order.buyerId);
+
+    // // Send email to the user
+    // await resend.emails.send({
+    //   from: "onboarding@resend.dev",
+    //   to: "shivangbirla9999@gmail.com",
+    //   subject: "Welcome to Resend!",
+    //   react: WelcomeEmail({
+    //     userFirstName: "John Doe",
+    //     loginDate: new Date(2023, 0, 15, 14, 30),
+    //     loginDevice: "Mobile",
+    //     loginLocation: "San Francisco",
+    //     loginIp: "203.0.113.1",
+    //   }),
+    // });
+
     return JSON.parse(JSON.stringify(newOrder));
   } catch (error) {
     handleError(error);
+    throw error; // Re-throw the error after handling
   }
 };
 
@@ -164,5 +186,23 @@ export async function getOrdersByUser({
     };
   } catch (error) {
     handleError(error);
+  }
+}
+
+// GET ORDER BY ID
+export async function getOrderById(orderId: string) {
+  try {
+    await connectToDatabase();
+
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      throw new Error("Order not found");
+    }
+
+    return JSON.parse(JSON.stringify(order));
+  } catch (error) {
+    handleError(error);
+    throw error; // Re-throw the error after handling
   }
 }

@@ -7,6 +7,8 @@ import { SearchParamProps } from "@/types";
 import { auth } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
+import ButtonOrder from "@/components/shared/ButtonOrder";
+import OrderCollection from "@/components/shared/OrderCollection";
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
@@ -33,8 +35,8 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
       </section>
 
       <section className="wrapper my-8">
-        <Collection
-          data={orderedEvents}
+        <OrderCollection
+          data={orders?.data}
           emptyTitle="No event tickets purchased yet"
           emptyStateSubtext="No worries - plenty of exciting events to explore!"
           collectionType="My_Tickets"

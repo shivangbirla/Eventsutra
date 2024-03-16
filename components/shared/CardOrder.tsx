@@ -5,23 +5,28 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { DeleteConfirmation } from "./DeleteConfirmation";
+import { IOrder } from "@/lib/database/models/order.model";
+import { getEventById } from "@/lib/actions/event.actions";
+import { getOrderById } from "@/lib/actions/order.actions";
+import { Button } from "../ui/button";
 
 type CardProps = {
-  event: IEvent;
+  order: IOrder;
   hasOrderLink?: boolean;
   hidePrice?: boolean;
 };
 
-const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
+const CardOrder = async ({ order, hasOrderLink, hidePrice }: CardProps) => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
+  const event = await getEventById(order.event._id);
 
   const isEventCreator = userId === event.organizer._id.toString();
 
   return (
     <div className="group relative flex min-h-[340px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px] dark:border-slate-700 dark:border dark:bg-slate-900 dark:backdrop-blur-sm">
       <Link
-        href={`/events/${event._id}`}
+        href={`/buyer/${order._id}`}
         style={{ backgroundImage: `url(${event.imageUrl})` }}
         className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
       />
@@ -81,9 +86,14 @@ const Card = ({ event, hasOrderLink, hidePrice }: CardProps) => {
             </Link>
           )}
         </div>
+        <div className="flex flex-row justify-between">
+          <Button asChild size="sm" className="mt-2 px-4 rounded-2xl flex">
+            <Link href={`/buyer/${order._id}`}>Get Ticket</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Card;
+export default CardOrder;

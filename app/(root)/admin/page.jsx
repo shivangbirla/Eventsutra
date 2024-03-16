@@ -6,6 +6,8 @@ import CategoryFilter from "@/components/shared/CategoryFilter";
 import { getUserById } from "@/lib/actions/user.actions";
 import { auth } from "@clerk/nextjs";
 import React, { Suspense } from "react";
+import { createOrder } from "@/lib/actions/order.actions";
+import ButtonOrder from "@/components/shared/ButtonOrder";
 
 const ProductsPage = async ({ searchParams }) => {
   const page = Number(searchParams?.page) || 1;
@@ -25,6 +27,7 @@ const ProductsPage = async ({ searchParams }) => {
         <div className="">
           <Search />
         </div>
+
         <div className="min-w-[150px]">
           <CategoryFilter />
         </div>

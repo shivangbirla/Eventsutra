@@ -229,7 +229,7 @@ body {
   }
 
   .select-item {
-    @apply py-3 cursor-pointer focus-visible:ring-offset-0 focus:bg-primary-50 dark:bg-slate-800 dark:text-white;
+    @apply py-3 cursor-pointer focus-visible:ring-offset-0 focus:bg-primary-50 dark:text-white;
   }
 
   .toggle-switch {

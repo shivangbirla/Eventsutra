@@ -7,6 +7,7 @@ import {
 import { formatDateTime } from "@/lib/utils";
 import { SearchParamProps } from "@/types";
 import Image from "next/image";
+import { FaGetPocket } from "react-icons/fa";
 
 const EventDetails = async ({
   params: { id },
@@ -29,7 +30,7 @@ const EventDetails = async ({
             alt="hero image"
             width={1000}
             height={1000}
-            className="h-full min-h-[300px] object-cover object-center rounded-[30px]"
+            className="h-full min-h-[300px] max-w-[95%] mx-auto mt-5 object-cover object-center rounded-[30px]"
           />
 
           <div className="flex w-full flex-col gap-8 p-5 md:p-10">
@@ -85,6 +86,12 @@ const EventDetails = async ({
                   height={32}
                 />
                 <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
+              </div>
+              <div className="p-regular-20 flex items-center gap-3">
+                <FaGetPocket className="w-[24px] h-[24px] text-green-500 ml-[6px]" />
+                <p className="p-medium-16 lg:p-regular-20">
+                  Min-age: {event.age}
+                </p>
               </div>
             </div>
 

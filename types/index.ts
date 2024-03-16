@@ -31,6 +31,7 @@ export type CreateEventParams = {
     price: string;
     isFree: boolean;
     url: string;
+    age: string;
   };
   path: string;
 };
@@ -49,6 +50,7 @@ export type UpdateEventParams = {
     price: string;
     isFree: boolean;
     url: string;
+    age: string;
   };
   path: string;
 };
@@ -89,6 +91,7 @@ export type Event = {
   startDateTime: Date;
   endDateTime: Date;
   url: string;
+  age: string;
   organizer: {
     _id: string;
     firstName: string;

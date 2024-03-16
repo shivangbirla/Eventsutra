@@ -17,4 +17,5 @@ export const eventFormSchema = z.object({
   price: z.string(),
   isFree: z.boolean(),
   url: z.string().url(),
+  age: z.string(),
 });

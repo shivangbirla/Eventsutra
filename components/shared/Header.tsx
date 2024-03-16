@@ -10,14 +10,17 @@ const Header = () => {
   return (
     <header className="fixed top-0 w-full border-b dark:border-gray-800 z-50 shadow-md dark:shadow-primary-black backnavdrop">
       <div className="wrapper flex items-center justify-between">
-        <Link href="/" className="w-36">
-          {/* <Image
-            src="/assets/images/logo.svg"
-            width={128}
-            height={38}
+        <Link href="/" className="flex flex-row items-center gap-4">
+          <Image
+            src="/assets/images/eventsutra.png"
+            width={90}
+            height={30}
             alt="Evently logo"
-          /> */}
-          <h3 className="text-semibold text-[24px]">EVENTS</h3>
+            className="cursor-pointer md:rounded-xl rounded-md w-[50px] h-[30px] md:w-[90px] md:h-[55px]"
+          />
+          <h3 className="text-semibold sm:text-[24px] text-[18px]">
+            EVENTSUTRA
+          </h3>
         </Link>
 
         <SignedIn>

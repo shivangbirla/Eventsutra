@@ -24,7 +24,7 @@ const Slider = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className=""
+        className="mt-2"
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
@@ -32,7 +32,7 @@ const Slider = () => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                className="block h-30% w-full object-cover rounded-[40px]"
+                className="block h-[30%] w-full object-cover rounded-[40px]"
               />
             </div>
           </SwiperSlide>
