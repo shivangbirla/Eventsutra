@@ -14,6 +14,7 @@ import Order from "../database/models/order.model";
 import Event from "../database/models/event.model";
 import { ObjectId } from "mongodb";
 import User from "../database/models/user.model";
+import { getEventById } from "./event.actions";
 import WelcomeEmail from "../../components/shared/Welcome";
 import { Resend } from "resend";
 import { getUserById } from "./user.actions";
@@ -58,6 +59,25 @@ export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
     console.log("Creating order..", order);
+
+    // Fetch the event by ID
+    const event = await getEventById(order.eventId);
+    if (!event) {
+      throw new Error("Event not found");
+    }
+
+    // Ensure there are enough tickets available
+    const ticketsRemaining = Number(event.noOfTickets) - Number(order.quantity);
+    if (ticketsRemaining < 0) {
+      throw new Error("Not enough tickets available");
+    }
+
+    // Update the event with the new ticket count
+    await Event.updateOne(
+      { _id: order.eventId },
+      { $set: { noOfTickets: ticketsRemaining } }
+    );
+
     const newOrder = await Order.create({
       ...order,
       event: order.eventId,

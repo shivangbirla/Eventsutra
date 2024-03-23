@@ -53,7 +53,7 @@ const OrderSchema = new Schema({
   },
 });
 
-// const Order = models.Order || model("Order", OrderSchema);
-const Order = model("Order", OrderSchema);
+const Order = models.Order || model("Order", OrderSchema);
+// const Order = model("Order", OrderSchema);
 
 export default Order;

@@ -42,7 +42,7 @@ const Checkout = ({
     const order = {
       eventTitle: event.title,
       eventId: event._id,
-      price: newPrice,
+      price: event.price,
       isFree: event.isFree,
       buyerId: userId,
       quantity: ticQty,
