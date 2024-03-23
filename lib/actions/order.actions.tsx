@@ -17,6 +17,7 @@ import User from "../database/models/user.model";
 import WelcomeEmail from "../../components/shared/Welcome";
 import { Resend } from "resend";
 import { getUserById } from "./user.actions";
+import { Quando } from "next/font/google";
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -34,7 +35,7 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
               name: order.eventTitle,
             },
           },
-          quantity: order.quantity,
+          quantity: Number(order.quantity),
         },
       ],
       metadata: {
@@ -52,7 +53,6 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
     throw error;
   }
 };
-
 // const resend = new Resend(process.env.RESEND_API_KEY);
 export const createOrder = async (order: CreateOrderParams) => {
   try {
