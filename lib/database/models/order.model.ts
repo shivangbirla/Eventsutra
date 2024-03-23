@@ -13,6 +13,7 @@ export interface IOrder extends Document {
     firstName: string;
     lastName: string;
   };
+  quantity: string;
 }
 
 export type IOrderItem = {
@@ -45,8 +46,14 @@ const OrderSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "User",
   },
+  quantity: {
+    type: String,
+    default: "1",
+    required: true,
+  },
 });
 
-const Order = models.Order || model("Order", OrderSchema);
+// const Order = models.Order || model("Order", OrderSchema);
+const Order = model("Order", OrderSchema);
 
 export default Order;

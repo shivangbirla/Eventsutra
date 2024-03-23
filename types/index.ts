@@ -32,6 +32,7 @@ export type CreateEventParams = {
     isFree: boolean;
     url: string;
     age: string;
+    noOfTickets: string;
   };
   path: string;
 };
@@ -51,6 +52,7 @@ export type UpdateEventParams = {
     isFree: boolean;
     url: string;
     age: string;
+    noOfTickets: string;
   };
   path: string;
 };
@@ -92,6 +94,7 @@ export type Event = {
   endDateTime: Date;
   url: string;
   age: string;
+  noOfTickets: string;
   organizer: {
     _id: string;
     firstName: string;
@@ -115,6 +118,7 @@ export type CheckoutOrderParams = {
   price: string;
   isFree: boolean;
   buyerId: string;
+  quantity: string;
 };
 
 export type CreateOrderParams = {
@@ -123,6 +127,7 @@ export type CreateOrderParams = {
   buyerId: string;
   totalAmount: string;
   createdAt: Date;
+  quantity: string;
 };
 
 export type GetOrdersByEventParams = {

@@ -13,6 +13,7 @@ export interface IEvent extends Document {
   isFree: boolean;
   url?: string;
   age: string;
+  noOfTickets: string;
   category: { _id: string; name: string };
   organizer: { _id: string; firstName: string; lastName: string };
 }
@@ -31,6 +32,7 @@ const EventSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: "Category" },
   organizer: { type: Schema.Types.ObjectId, ref: "User" },
   age: { type: String },
+  noOfTickets: { type: String },
 });
 
 const Event = models.Event || model("Event", EventSchema);

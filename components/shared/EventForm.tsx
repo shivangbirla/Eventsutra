@@ -30,6 +30,8 @@ import { useRouter } from "next/navigation";
 import { createEvent, updateEvent } from "@/lib/actions/event.actions";
 import { IEvent } from "@/lib/database/models/event.model";
 import { FaGetPocket } from "react-icons/fa";
+import { FaWindowMaximize } from "react-icons/fa6";
+import { TbCoinRupee } from "react-icons/tb";
 
 type EventFormProps = {
   userId: string;
@@ -231,6 +233,28 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
             )}
           />
         </div>
+        <div className="flex flex-col gap-5 md:flex-row">
+          <FormField
+            control={form.control}
+            name="noOfTickets"
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormControl>
+                  <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 dark:bg-slate-800 px-5 py-2">
+                    <FaWindowMaximize className="w-[20px] h-[20px] text-gray-500" />
+
+                    <Input
+                      placeholder="Enter no of tickets you wish to list.."
+                      {...field}
+                      className="input-field"
+                    />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
 
         <div className="flex flex-col gap-5 md:flex-row">
           <FormField
@@ -306,13 +330,14 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full dark:bg-slate-800 bg-grey-50 px-4 py-2">
-                    <Image
+                    {/* <Image
                       src="/assets/icons/dollar.svg"
                       alt="dollar"
                       width={24}
                       height={24}
                       className="filter-grey"
-                    />
+                    /> */}
+                    <TbCoinRupee className="w-[38px] h-[40px] text-gray-500" />
                     <Input
                       type="number"
                       placeholder="Price"

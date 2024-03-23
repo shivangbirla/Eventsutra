@@ -7,7 +7,15 @@ import { checkoutOrder } from "@/lib/actions/order.actions";
 
 loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
-const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
+const Checkout = ({
+  event,
+  userId,
+  ticketQuantity,
+}: {
+  event: IEvent;
+  userId: string;
+  ticketQuantity: number;
+}) => {
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -23,12 +31,21 @@ const Checkout = ({ event, userId }: { event: IEvent; userId: string }) => {
   }, []);
 
   const onCheckout = async () => {
+    const price = Number(event.price) * ticketQuantity;
+    const newPrice = String(price);
+    const ticQty = String(ticketQuantity);
+    if (isNaN(price)) {
+      console.error("Price is not a valid number");
+      return;
+    }
+
     const order = {
       eventTitle: event.title,
       eventId: event._id,
-      price: event.price,
+      price: newPrice,
       isFree: event.isFree,
       buyerId: userId,
+      quantity: ticQty,
     };
 
     await checkoutOrder(order);

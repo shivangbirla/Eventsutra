@@ -14,7 +14,7 @@ const EventDetails = async ({
   searchParams,
 }: SearchParamProps) => {
   const event = await getEventById(id);
-
+  // console.log(event);
   const relatedEvents = await getRelatedEventsByCategory({
     categoryId: event.category._id,
     eventId: event._id,
@@ -55,7 +55,11 @@ const EventDetails = async ({
                 </p>
               </div>
             </div>
-
+            <div>
+              <p className="p-medium-16 lg:p-regular-20">
+                {event.noOfTickets} tickets left
+              </p>
+            </div>
             <CheckoutButton event={event} />
 
             <div className="flex flex-col gap-5">

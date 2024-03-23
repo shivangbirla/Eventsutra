@@ -22,24 +22,25 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
   const price = order.isFree ? 0 : Number(order.price) * 100;
-
+  // console.log("Creating session..", order);
   try {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
           price_data: {
-            currency: "usd",
+            currency: "INR",
             unit_amount: price,
             product_data: {
               name: order.eventTitle,
             },
           },
-          quantity: 1,
+          quantity: order.quantity,
         },
       ],
       metadata: {
         eventId: order.eventId,
         buyerId: order.buyerId,
+        quantity: order.quantity,
       },
       mode: "payment",
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,
@@ -56,11 +57,12 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
 export const createOrder = async (order: CreateOrderParams) => {
   try {
     await connectToDatabase();
-
+    console.log("Creating order..", order);
     const newOrder = await Order.create({
       ...order,
       event: order.eventId,
       buyer: order.buyerId,
+      quantity: order.quantity,
     });
 
     // // Fetch user details
