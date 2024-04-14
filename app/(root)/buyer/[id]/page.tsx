@@ -15,9 +15,9 @@ const EventTicketPage = async ({ params: { id } }: SearchParamProps) => {
 
   const imageUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/buyer/${order._id}`;
   return (
-    <div className="container mx-auto py-[5%] mt-2">
+    <div className="container mx-auto py-[6%] mt-2">
       <div className="dark:bg-slate-900 border-2 border-slate-600 shadow-2xl rounded-2xl p-12">
-        <h1 className="text-3xl font-bold mb-8 flex justify-center">
+        <h1 className="text-3xl font-bold mb-[7%] flex justify-center">
           Event Ticket
         </h1>
         <div>
@@ -36,9 +36,15 @@ const EventTicketPage = async ({ params: { id } }: SearchParamProps) => {
                 {formatDateTime(event.endDateTime).dateOnly} -{" "}
                 {formatDateTime(event.endDateTime).timeOnly}
               </p>
-              <p>Minimum Age: {event.age}</p>
-              <p>Amount Paid: ${event.price}</p>
-              <p>Gmaps-Address: {event.url}</p>
+              <p>Min-Age: {event.age}</p>
+              <p>No of Tickets: {order.quantity}</p>
+              <p>Amount Paid: ₹{order.totalAmount}</p>
+              <a href={event.url} className="">
+                Navigation-Link:{" "}
+                <span className="text-primary-500 hover:underline">
+                  {event.url}
+                </span>
+              </a>
               <p>Payment At: {order.createdAt}</p>
               <p className="break-all flex flex-col">
                 StripeId:
@@ -47,15 +53,13 @@ const EventTicketPage = async ({ params: { id } }: SearchParamProps) => {
                 </span>
               </p>
             </div>
-            <Image
+            <img
               src={event.imageUrl}
               alt="hero image"
-              width={400}
-              height={400}
-              className="h-full min-h-[300px] hidden sm:flex object-cover object-center rounded-[30px]"
+              className="hidden sm:flex rounded-[50%] object-cover p-2 border-2 border-slate-600 w-[400px] h-[400px]"
             />
           </div>
-          <div className="mt-[10%] sm:mt-[3%] flex justify-center">
+          <div className="mt-[10%] sm:mt-[5%] flex justify-center">
             {imageUrl && (
               <QRCode
                 value={imageUrl}
@@ -72,13 +76,13 @@ const EventTicketPage = async ({ params: { id } }: SearchParamProps) => {
             >
               <Link href={`/form/${order._id}`}>Get Email</Link>
             </Button> */}
-            <Button
+            {/* <Button
               asChild
               size="lg"
               className="sm:mt-2 px-4 rounded-2xl mt-5 bg-green-600 hover:bg-green-700"
             >
               <Link href={`/form/${order._id}`}>Get Email Notify</Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

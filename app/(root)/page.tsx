@@ -60,8 +60,10 @@ export default async function Home({ searchParams }: SearchParamProps) {
         id="events"
         className="wrapper my-5 flex flex-col gap-8 md:gap-12"
       >
-        <h2 className="h2-bold z-30">
-          Trust by <br /> Thousands of Events
+        <h2 className="h2-bold">
+          <span className="pb-6">Skip the Lines, Score the Tickets: </span>
+          <br />
+          <span>Your Event Ticket Concierge</span>
         </h2>
 
         <div className="flex w-full flex-col gap-5 md:flex-row">

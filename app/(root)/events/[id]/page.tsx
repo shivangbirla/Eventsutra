@@ -56,12 +56,11 @@ const EventDetails = async ({
               </div>
             </div>
             <div>
-              <p className="p-medium-16 lg:p-regular-20">
-                {event.noOfTickets} tickets left
+              <p className="p-medium-16 lg:p-regular-20 ml-2">
+                {event.noOfTickets} tickets left..
               </p>
             </div>
             <CheckoutButton event={event} />
-
             <div className="flex flex-col gap-5">
               <div className="flex gap-2 md:gap-3">
                 <Image
@@ -92,7 +91,7 @@ const EventDetails = async ({
                 <p className="p-medium-16 lg:p-regular-20">{event.location}</p>
               </div>
               <div className="p-regular-20 flex items-center gap-3">
-                <FaGetPocket className="w-[24px] h-[24px] text-green-500 ml-[6px]" />
+                <FaGetPocket className="w-[24px] h-[24px] text-green-500 ml-[5px]" />
                 <p className="p-medium-16 lg:p-regular-20">
                   Min-age: {event.age}
                 </p>
@@ -102,17 +101,21 @@ const EventDetails = async ({
             <div className="flex flex-col gap-2">
               <p className="p-bold-20 text-grey-600">Description:</p>
               <p className="p-medium-16 lg:p-regular-18">{event.description}</p>
-              <p className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline">
+              <p className="p-bold-20 text-grey-600">NavigateBy:</p>
+              <a
+                href={event.url}
+                className="p-medium-16 lg:p-regular-18 truncate text-primary-500 underline"
+              >
                 {event.url}
-              </p>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* EVENTS with the same category */}
-      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Related Events</h2>
+      <section className="wrapper my-8 flex flex-col gap-8 md:gap-12 mt-[5%]">
+        <h2 className="h2-bold">Explore More</h2>
 
         <Collection
           data={relatedEvents?.data}

@@ -337,7 +337,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                       height={24}
                       className="filter-grey"
                     /> */}
-                    <TbCoinRupee className="w-[38px] h-[40px] text-gray-500" />
+                    <TbCoinRupee className="w-[38px] h-[38px] text-gray-500" />
                     <Input
                       type="number"
                       placeholder="Price"
@@ -390,7 +390,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                     />
 
                     <Input
-                      placeholder="URL"
+                      placeholder="Enter navigation link.."
                       {...field}
                       className="input-field"
                     />

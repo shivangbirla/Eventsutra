@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -27,12 +28,12 @@ const Footer = () => {
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold text-[22px]">SOCIAL MEDIA</h1>
             <p className="flex items-center gap-2">
-              <FaFacebook className="w-[24px] h-[24px]" />
+              <FaFacebook className="w-[22px] h-[22px]" />
 
               <span>Facebook</span>
             </p>
             <p className="flex items-center gap-2">
-              <FaInstagram className="w-[24px] h-[24px]" />
+              <FaInstagram className="w-[22px] h-[22px]" />
               <a
                 href="https://www.instagram.com/event_sutra_?igsh=MWJwcmx2amMzYmR0eA%3D%3D&utm_source=qr"
                 target="_blank"
@@ -40,6 +41,10 @@ const Footer = () => {
               >
                 Instagram
               </a>
+            </p>
+            <p className="flex items-center gap-2">
+              <FaWhatsapp className="w-[22px] h-[22px]" />
+              <span>Whatsapp</span>
             </p>
           </div>
         </div>

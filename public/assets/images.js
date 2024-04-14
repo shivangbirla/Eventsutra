@@ -1,12 +1,15 @@
 // Images
-import first from "./images/first.jpg";
-import second from "./images/second.jpeg";
-import third from "./images/third.jpeg";
-import fourth from "./images/fourth.jpg";
+import h1 from "./images/h-1.jpg";
+import h2 from "./images/h-2.jpg";
+import h3 from "./images/h-3.jpg";
+import h4 from "./images/h-4.jpg";
+import h5 from "./images/h-5.jpg";
+import h6 from "./images/h-6.jpg";
+import h7 from "./images/h-7.jpg";
 
 export const images = [
-  { src: fourth, alt: "First" },
-  { src: fourth, alt: "Second" },
-  { src: fourth, alt: "Third" },
-  { src: fourth, alt: "Fourth" },
+  { src: h6, alt: "First" },
+  { src: h5, alt: "Second" },
+  { src: h3, alt: "Third" },
+  { src: h4, alt: "Fourth" },
 ];

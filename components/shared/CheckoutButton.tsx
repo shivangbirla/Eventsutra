@@ -14,11 +14,19 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
   const userId = user?.publicMetadata.userId as string;
   const hasEventFinished = new Date(event.endDateTime) < new Date();
 
-  // State to manage ticket quantity
-  const [ticketQuantity, setTicketQuantity] = useState(1);
+  // Determine the maximum number of tickets allowed
+  const maxTicketsAllowed = Math.min(10, Number(event.noOfTickets));
+
+  // State to manage ticket quantity, initializing it to 1 or maxTicketsAllowed if it's lower than 1
+  const [ticketQuantity, setTicketQuantity] = useState(
+    Math.min(1, maxTicketsAllowed)
+  );
 
   // Function to increment ticket quantity
-  const incrementTicket = () => setTicketQuantity(ticketQuantity + 1);
+  const incrementTicket = () =>
+    setTicketQuantity((prevQuantity) =>
+      Math.min(prevQuantity + 1, maxTicketsAllowed)
+    );
 
   // Function to decrement ticket quantity
   const decrementTicket = () => {
@@ -41,26 +49,28 @@ const CheckoutButton = ({ event }: { event: IEvent }) => {
 
           <SignedIn>
             {/* Buttons for increment and decrement */}
-            <div className="flex items-center mx-2">
-              <button
-                className="p-1 bg-blue-600 hover:bg-blue-700 rounded"
-                onClick={decrementTicket}
-              >
-                <CiCircleMinus className="w-6 h-6" />
-              </button>
-              <span className="m-4">{ticketQuantity}</span>
-              <button
-                className="p-1 bg-blue-600 hover:bg-blue-700 rounded"
-                onClick={incrementTicket}
-              >
-                <CiCirclePlus className="w-6 h-6" />
-              </button>
+            <div className="flex gap-4">
+              <div className="flex items-center mx-2">
+                <button
+                  className="p-1 bg-blue-600 hover:bg-blue-700 rounded"
+                  onClick={decrementTicket}
+                >
+                  <CiCircleMinus className="w-6 h-6" />
+                </button>
+                <span className="m-4">{ticketQuantity}</span>
+                <button
+                  className="p-1 bg-blue-600 hover:bg-blue-700 rounded"
+                  onClick={incrementTicket}
+                >
+                  <CiCirclePlus className="w-6 h-6" />
+                </button>
+              </div>
+              <Checkout
+                event={event}
+                userId={userId}
+                ticketQuantity={ticketQuantity}
+              />
             </div>
-            <Checkout
-              event={event}
-              userId={userId}
-              ticketQuantity={ticketQuantity}
-            />
           </SignedIn>
         </>
       )}
