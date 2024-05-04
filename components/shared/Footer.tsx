@@ -23,7 +23,7 @@ const Footer = () => {
             <p>For Business</p>
             <p>Blog</p>
             <p>Privacy Policy</p>
-            <p>Terms & Conditions</p>
+            <Link href="/terms">Terms & Conditions</Link>
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold text-[22px]">SOCIAL MEDIA</h1>
@@ -44,7 +44,7 @@ const Footer = () => {
             </p>
             <p className="flex items-center gap-2">
               <FaWhatsapp className="w-[22px] h-[22px]" />
-              <span>Whatsapp</span>
+              <a href="https://wa.me/9032797797">Whatsapp</a>
             </p>
           </div>
         </div>
