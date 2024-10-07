@@ -54,11 +54,11 @@ const Footer = () => {
             className="flex flex-row items-center gap-2 rounded-xl"
           >
             <Image
-              src="/assets/images/eventsutra.png"
+              src="/assets/images/logo.svg"
               alt="logo"
-              width={80}
-              height={25}
-              className="md:h-[40px] md:w-[80px] h-[25px] w-[60px] rounded-md md:rounded-xl"
+              width={128}
+              height={38}
+              className="hidden sm:block"
             />
             {/* <h3 className="text-semibold sm:text-[20px] text-[16px]">
               EVENTSUTRA

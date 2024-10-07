@@ -25,13 +25,13 @@ const MobileNav = () => {
         </SheetTrigger>
         <SheetContent className="flex flex-col gap-6 bg-white dark:bg-gray-900 md:hidden">
           <div className="flex flex-row items-center gap-2">
-            <Image
+            {/* <Image
               src="/assets/images/eventsutra.png"
               alt="logo"
               width={128}
               height={38}
               className="w-[90px] h-[42px] rounded-md"
-            />
+            /> */}
             <p className="text-white">Eventsutra</p>
           </div>
           <Separator className="border border-gray-50 dark:border-gray-700" />

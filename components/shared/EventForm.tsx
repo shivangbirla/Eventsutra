@@ -52,7 +52,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
       : eventDefaultValues;
   const router = useRouter();
 
-  const { startUpload } = useUploadThing("imageUploader");
+  // const { startUpload } = useUploadThing("imageUploader");
 
   const form = useForm<z.infer<typeof eventFormSchema>>({
     resolver: zodResolver(eventFormSchema),
@@ -60,22 +60,37 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof eventFormSchema>) {
-    let uploadedImageUrl = values.imageUrl;
+    // let uploadedImageUrl = values.imageUrl;
 
-    if (files.length > 0) {
-      const uploadedImages = await startUpload(files);
+    // if (files.length > 0) {
+    //   const uploadedImages = await startUpload(files);
 
-      if (!uploadedImages) {
-        return;
-      }
+    //   if (!uploadedImages) {
+    //     return;
+    //   }
 
-      uploadedImageUrl = uploadedImages[0].url;
-    }
+    //   uploadedImageUrl = uploadedImages[0].url;
+    // }
 
     if (type === "Create") {
+      // Array of image URLs
+      const imageUrls = [
+        "https://utfs.io/f/IXKLiSDv1OScoyyk4GmFBYCit2zdycDwVnkLuXqEg7Kv1FJa",
+        "https://utfs.io/f/IXKLiSDv1OScUJPUF9XEWlQ8dxcGk1MhBfSPu2AVvwNFzDRC",
+        "https://utfs.io/f/IXKLiSDv1OSc9EeZZZyE8SBqIQV7fhNDg2x0WMYcvP51wHjO",
+        "https://utfs.io/f/IXKLiSDv1OSc7wwFXzMLSukJDHIKZpwi1sF3b8e0GV5WfAh6",
+      ];
+
+      // Randomly select one image URL
+      const randomImageUrl =
+        imageUrls[Math.floor(Math.random() * imageUrls.length)];
+
       try {
         const newEvent = await createEvent({
-          event: { ...values, imageUrl: uploadedImageUrl },
+          event: {
+            ...values,
+            imageUrl: randomImageUrl, // Assign random image URL
+          },
           userId,
           path: "/profile",
         });
@@ -98,7 +113,12 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
       try {
         const updatedEvent = await updateEvent({
           userId,
-          event: { ...values, imageUrl: uploadedImageUrl, _id: eventId },
+          event: {
+            ...values,
+            imageUrl:
+              "https://utfs.io/f/IXKLiSDv1OSc9EeZZZyE8SBqIQV7fhNDg2x0WMYcvP51wHjO",
+            _id: eventId,
+          },
           path: `/events/${eventId}`,
         });
 
